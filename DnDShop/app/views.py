@@ -39,7 +39,7 @@ def about(request):
         'app/about.html',
         {
             'title':'О нас',
-            'message':'Сведения о нас.',
+            'message':'Что это за сайт?',
             'year':datetime.now().year,
         }
     )
