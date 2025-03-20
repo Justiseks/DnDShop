@@ -43,4 +43,17 @@ input[type="checkbox"].input-validation-error {
 
 .logo{
     max-width: 50px;
+    margin-top: 5px;
+}
+
+.navbar{
+    height: 70px;
+}
+
+.navbar li  {
+    margin-top: 10px;
+}
+
+.navbar-right{
+    margin-top: 5px;
 }

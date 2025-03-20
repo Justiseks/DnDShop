@@ -56,6 +56,14 @@
     <Folder Include="DnDShop\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\content\dice-set.png" />
+    <Content Include="app\static\app\content\DnDBeyondFavicon.png" />
+    <Content Include="app\static\app\content\DnDsuFavicon.png" />
+    <Content Include="app\static\app\content\favicon.ico" />
+    <Content Include="app\static\app\content\logo.png" />
+    <Content Include="app\static\app\content\miniature-painting.jpg" />
+    <Content Include="app\static\app\content\Roll20Favicon.png" />
+    <Content Include="app\templates\app\links.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
