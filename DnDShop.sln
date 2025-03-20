@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DnDShop", "DnDShop\DnDShop.pyproj", "{AEFBCD5E-6539-4C85-BB5F-7F3BCC0DD8F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEFBCD5E-6539-4C85-BB5F-7F3BCC0DD8F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFBCD5E-6539-4C85-BB5F-7F3BCC0DD8F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFBCD5E-6539-4C85-BB5F-7F3BCC0DD8F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFBCD5E-6539-4C85-BB5F-7F3BCC0DD8F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46C9BFD5-25C1-4CC6-B806-390FC8F4BC53}
+	EndGlobalSection
+EndGlobal
