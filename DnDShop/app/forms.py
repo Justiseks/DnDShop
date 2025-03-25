@@ -16,3 +16,12 @@ class BootstrapAuthenticationForm(AuthenticationForm):
                                widget=forms.PasswordInput({
                                    'class': 'form-control',
                                    'placeholder':'Password'}))
+
+class PoolForm(forms.Form):
+     rating_overall = forms.IntegerField(label='Общее впечатление (1-5)', min_value=1, max_value=5)
+     rating_design = forms.IntegerField(label='Внешний вид (1-5)', min_value=1, max_value=5)
+     rating_content = forms.IntegerField(label='Новости и контент (1-5)', min_value=1, max_value=5)
+     features_liked = forms.CharField(label='Что Вам больше всего понравилось?', widget=forms.Textarea)
+     features_improve = forms.CharField(label='Что мы могли бы улучшить?', widget=forms.Textarea)
+     newsletter = forms.BooleanField(label='Хотите получать бесплатную рассылку новостей?', required=False)
+     contact_method = forms.ChoiceField(label='Выберите способ связи:', choices=[('email', 'Email'), ('phone', 'Телефон')])
