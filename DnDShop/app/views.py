@@ -5,6 +5,8 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from .forms import PoolForm
 
 def home(request):
@@ -64,12 +66,12 @@ def pool(request):
          if form.is_valid():
              submitted = True
              field_names = {
-                 'rating_overall': 'Общая оценка сайта',
-                 'rating_design': 'Оценка дизайна',
-                 'rating_content': 'Оценка контента',
-                 'features_liked': 'Что понравилось',
-                 'features_improve': 'Что можно улучшить',
-                 'newsletter': 'Подписка на рассылку',
+                 'rating_overall': 'Общее впечатление',
+                 'rating_design': 'Внешний вид',
+                 'rating_content': 'Новости и контент',
+                 'features_liked': 'Что Вам больше всего понравилось?',
+                 'features_improve': 'Что мы могли бы улучшить?',
+                 'newsletter': 'Хотите получать бесплатную рассылку новостей?',
                  'contact_method': 'Способ связи',
              }
              submitted_data = [f'{field_names[field]}: {value}' for field, value in form.cleaned_data.items()]
@@ -82,4 +84,29 @@ def pool(request):
                      submitted_data[index] = 'Способ связи: Сообщить по телефону' if 'phone' in i else 'Способ связи: Сообщить на email'
      else:
          form = PoolForm()
-     return render(request, 'app/pool.html', {'form': form, 'submitted': submitted, 'submitted_data': submitted_data if submitted else None})
+     return render(request, 'app/pool.html', {'form': form, 'title':'Обратная связь', 'submitted': submitted, 'submitted_data': submitted_data if submitted else None})
+
+def registration(request):
+    assert isinstance(request, HttpRequest)
+    if request.method == "POST": # после отправки формы
+        regform = UserCreationForm (request.POST)
+        if regform.is_valid(): #валидация полей формы
+            reg_f = regform.save(commit=False) # не сохраняем автоматически данные формы
+            reg_f.is_staff = False # запрещен вход в административный раздел
+            reg_f.is_active = True # активный пользователь
+            reg_f.is_superuser = False # не является суперпользователем
+            reg_f.date_joined = datetime.now() # дата регистрации
+            reg_f.last_login = datetime.now() # дата последней авторизации
+            reg_f.save() # сохраняем изменения после добавления данных
+            return redirect('home') # переадресация на главную страницу после регистрации
+
+    else:
+        regform = UserCreationForm() # создание объекта формы для ввода данных нового пользователя
+    return render(
+        request,
+        'app/registration.html',
+    {
+            'regform': regform, # передача формы в шаблон веб-страницы
+            'year':datetime.now().year,
+    }
+)

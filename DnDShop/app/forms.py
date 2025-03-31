@@ -11,11 +11,11 @@ class BootstrapAuthenticationForm(AuthenticationForm):
     username = forms.CharField(max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
-                                   'placeholder': 'User name'}))
+                                   'placeholder': 'Имя'}))
     password = forms.CharField(label=_("Password"),
                                widget=forms.PasswordInput({
                                    'class': 'form-control',
-                                   'placeholder':'Password'}))
+                                   'placeholder':'Пароль'}))
 
 class PoolForm(forms.Form):
      rating_overall = forms.IntegerField(label='Общее впечатление (1-5)', min_value=1, max_value=5)
