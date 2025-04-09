@@ -4,6 +4,7 @@ Definition of forms.
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from .models import Comment
 from django.utils.translation import gettext_lazy as _
 
 class BootstrapAuthenticationForm(AuthenticationForm):
@@ -25,3 +26,9 @@ class PoolForm(forms.Form):
      features_improve = forms.CharField(label='Что мы могли бы улучшить?', widget=forms.Textarea)
      newsletter = forms.BooleanField(label='Хотите получать бесплатную рассылку новостей?', required=False)
      contact_method = forms.ChoiceField(label='Выберите способ связи:', choices=[('email', 'Email'), ('phone', 'Телефон')])
+
+class CommentForm(forms.ModelForm):
+     class Meta:
+         model = Comment
+         fields = ("text", )
+         labels = {"text": "Комментарий"}

@@ -1,5 +1,7 @@
 {% extends "app/layout.html" %}
 
+{% load static %}
+
 {% block content %}
 
 <div class="jumbotron">
@@ -15,5 +17,25 @@
         </p>
     </div>
 </div>
+
+<div class="glide">
+    <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+            <li class="glide__slide"><img src="{% static 'app/content/karusel1.png' %}" alt="Image1"></li>
+            <li class="glide__slide"><img src="{% static 'app/content/karusel2.png' %}" alt="Image2"></li>
+            <li class="glide__slide"><img src="{% static 'app/content/karusel3.png' %}" alt="Image3"></li>
+        </ul>
+    </div>
+    <div data-glide-el="controls" class="glide-controls">
+        <button data-glide-dir="<">Назад</button>
+        <button data-glide-dir=">">Далее</button>
+    </div>
+</div>
+<script>new Glide('.glide', {
+              type: 'carousel',
+              autoplay: 3000,
+              hoverpause: true,
+              perView: 1,
+          }).mount();</script>
 
 {% endblock %}

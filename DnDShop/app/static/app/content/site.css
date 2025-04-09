@@ -59,14 +59,16 @@ input[type="checkbox"].input-validation-error {
 }
 
 .feedback-section {
-    max-width: 600px; /* Уменьшаем ширину для лучшей адаптации */
-    margin: 40px auto; /* Добавляем отступ сверху и по центру */
-    padding: 30px;
-    border: 1px solid #ddd; /* Светлее, чем основная граница */
+    width: 600px;
+    padding: 20px;
+    margin: 30px 0;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Более заметная тень */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: #f9f9f9;
     align-items: center;
 }
+
 
 .feedback-form {
     align-items: center;
@@ -75,7 +77,7 @@ input[type="checkbox"].input-validation-error {
     .feedback-form label {
         display: block;
         margin-bottom: 8px;
-        font-weight: bold; /* Выделяем label жирным шрифтом */
+        font-weight: bold; 
     }
 
     .feedback-form input,
@@ -87,31 +89,134 @@ input[type="checkbox"].input-validation-error {
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
-        font-family: inherit; /* Наследуем шрифт от body */
+        font-family: inherit; 
     }
 
     .feedback-form textarea {
         height: 150px;
-        resize: vertical; /*  Разрешаем изменение высоты, но не ширины */
+        resize: vertical; 
     }
 
 .submit-button {
-    background-color: #222; /*  Тёмно-серый, как в шапке */
+    background-color: #222; 
     color: white;
     padding: 12px 20px;
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s ease; /* Плавный переход цвета */
+    transition: background-color 0.3s ease; 
 }
 
     .submit-button:hover {
-        background-color: #333; /*  Еще темнее при наведении */
+        background-color: #333; 
     }
 
 .success-message {
-    color: #000000; /*  Синий, как ссылки */
+    color: #000000; 
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
 }
+
+.glide__slide img {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px; 
+    object-fit: contain; 
+    display: block;
+    margin: 0 auto;
+}
+
+.glide-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.glide-controls button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, #fff, #d4af37, #FFF);
+    margin: 30px 0;
+}
+
+
+section {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    margin-bottom: 30px;
+}
+
+    section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    section + section {
+        margin-top: 60px; 
+
+    }
+
+        section + section::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, #fff, #d4af37, #fff);
+            border-radius: 1px;
+        }
+
+
+
+    section a {
+        color: #000; 
+        text-decoration: none; 
+        transition: color 0.3s ease;
+    }
+
+        section a:hover {
+            color: #d4af37; 
+            text-decoration: none; 
+        }
+
+.comment-form {
+    align-items: center;
+}
+
+    .comment-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold; 
+    }
+
+    .comment-form input,
+    .comment-form textarea,
+    .comment-form select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: inherit; 
+    }
+
+    .comment-form textarea {
+        height: 150px;
+        resize: vertical; 
+        max-width: 100%;
+    }
