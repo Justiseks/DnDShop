@@ -303,4 +303,79 @@ section {
     margin: 0 auto;
 }
 
+.article-form-section {
+    background-color: #fefdfb;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 30px 25px;
+    margin: 40px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+    .article-form-section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .article-form-section h3 {
+        text-align: center;
+        font-size: 1.6em;
+        font-weight: bold;
+        color: #4a4a2e;
+        margin-bottom: 20px;
+    }
+
+    .article-form-section form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+        .article-form-section form input,
+        .article-form-section form textarea,
+        .article-form-section form select {
+            width: 100%;
+            max-width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1em;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .article-form-section form textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+    .article-form-section .save {
+        background-color: #4a4a2e;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+        width: fit-content;
+        align-self: center;
+    }
+
+        .article-form-section .save:hover {
+            background-color: #5c5c3a;
+        }
+
+
+    .article-form-section form label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #4a4a2e;
+        font-size: 1em;
+    }
