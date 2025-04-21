@@ -1,0 +1,17 @@
+{% extends 'app/layout.html' %}
+ 
+ {% block title %}Видео{% endblock %}
+ 
+ {% load static %}
+ 
+ {% block content %}
+    <section class="video-section">
+        <h2>Играем с мастером Владиславом</h2>
+        <video src="/static/app/media/video1.mp4" controls poster="/static/app/media/preview1.jpg"></video>
+    </section>
+
+    <section class="video-section">
+        <h2>Бросок ва-банк</h2>
+        <video src="/static/app/media/video2.mp4" controls poster="/static/app/media/preview2.jpg"></video>
+    </section>
+ {% endblock %}

@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>DnDShop</Name>
     <RootNamespace>DnDShop</RootNamespace>
-    <InterpreterId>MSBuild|env3|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env4|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -50,6 +50,7 @@
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
     <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\media\" />
     <Folder Include="app\static\app\scripts\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
@@ -63,12 +64,19 @@
     <Content Include="app\static\app\content\logo.png" />
     <Content Include="app\static\app\content\miniature-painting.jpg" />
     <Content Include="app\static\app\content\Roll20Favicon.png" />
+    <Content Include="app\static\app\media\photo_2023-07-21_11-.jpg.webp" />
+    <Content Include="app\static\app\media\preview1.jpg" />
+    <Content Include="app\static\app\media\preview2.jpg" />
+    <Content Include="app\static\app\media\video1.mp4" />
+    <Content Include="app\static\app\media\video2.mp4" />
     <Content Include="app\static\app\scripts\pool.js" />
     <Content Include="app\templates\app\blog_detail.html" />
     <Content Include="app\templates\app\blog_list.html" />
     <Content Include="app\templates\app\links.html" />
+    <Content Include="app\templates\app\newpost.html" />
     <Content Include="app\templates\app\pool.html" />
     <Content Include="app\templates\app\registration.html" />
+    <Content Include="app\templates\app\videopost.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -128,6 +136,15 @@
       <Id>env3</Id>
       <Version>3.9</Version>
       <Description>env3 (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="env4\">
+      <Id>env4</Id>
+      <Version>3.9</Version>
+      <Description>env4 (Python 3.9 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

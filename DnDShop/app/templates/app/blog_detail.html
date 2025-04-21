@@ -5,9 +5,13 @@
 
 
   {% block content %}
+    {% if post.image %}
+        <img class="photopost" src="{{ post.image.url }}" alt="Изображение статьи блога" />
+    {% endif %}
+
 <section>
     <h1>{{ post.title }}</h1>
-    <p class="date">{{ post.posted }}</p>
+    <p class="date post-date">{{ post.posted }}</p>
     <div class="content"><p>{{ post.content|linebreaksbr }}</p>  </div>
     <a href="{% url 'blog_list' %}" class="back-link">Назад к списку</a>
 </section>
@@ -29,7 +33,7 @@
       {% for comment in comments %}
 
 <section class="comment-section">
-    <h7>{{ comment.date }}</h7>
+    <p class="date comment-date">{{ comment.date }}</p>
     <h4>{{ comment.author }}</h4>
     <p>{{ comment.text|linebreaksbr }}</p>
 </section>
