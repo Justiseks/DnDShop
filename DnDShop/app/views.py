@@ -172,5 +172,5 @@ def newpost(request):
         }
     )
 
-def videopost(request):
+def videopost(request): #Код действия контреллера
      return render(request, "app/videopost.html")

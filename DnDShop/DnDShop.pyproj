@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>DnDShop</Name>
     <RootNamespace>DnDShop</RootNamespace>
-    <InterpreterId>MSBuild|env4|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,6 +31,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\admin.py" />
     <Compile Include="app\forms.py" />
     <Compile Include="app\models.py" />
     <Compile Include="app\tests.py" />
@@ -114,46 +115,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env1\">
-      <Id>env1</Id>
-      <Version>3.9</Version>
-      <Description>env1 (Python 3.9 (64-bit))</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
-    <Interpreter Include="env2\">
-      <Id>env2</Id>
-      <Version>3.9</Version>
-      <Description>env2 (Python 3.9 (64-bit))</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
-    <Interpreter Include="env3\">
-      <Id>env3</Id>
-      <Version>3.9</Version>
-      <Description>env3 (Python 3.9 (64-bit))</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
-    <Interpreter Include="env4\">
-      <Id>env4</Id>
-      <Version>3.9</Version>
-      <Description>env4 (Python 3.9 (64-bit))</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
     <Interpreter Include="env\">
       <Id>env</Id>
-      <Version>3.9</Version>
-      <Description>env (Python 3.9 (64-bit))</Description>
+      <Version>3.13</Version>
+      <Description>env (Python 3.13 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
