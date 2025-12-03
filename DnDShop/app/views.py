@@ -22,14 +22,16 @@ from django.contrib.auth import login
 from django.contrib.auth.models import Group
 
 def home(request):
-    """Renders the home page."""
+    """Главная страница: добавляем последние 3 новости (посты блога)."""
     assert isinstance(request, HttpRequest)
+    latest_posts = Blog.objects.all()[:3]   # модель Blog есть в models.py
     return render(
         request,
         'app/index.html',
         {
-            'title':'Главная',
-            'year':datetime.now().year,
+            'title': 'Главная',
+            'year': datetime.now().year,
+            'latest_posts': latest_posts,
         }
     )
 

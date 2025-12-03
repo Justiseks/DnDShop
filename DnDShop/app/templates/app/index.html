@@ -1,29 +1,63 @@
 {% extends "app/layout.html" %}
-
 {% load static %}
 
 {% block content %}
 
+<!-- Название + логотип (добавлено прямо на главной) -->
+<div class="site-header text-center" style="margin-top:20px; margin-bottom:20px;">
+    <img src="{% static 'app/content/logo.png' %}" alt="Лавка Некроманта" style="height:90px; vertical-align:middle; margin-right:12px;">
+    <h1 style="display:inline-block; vertical-align:middle; margin:0;">Лавка Некроманта</h1>
+    <p class="muted" style="margin-top:8px;">Интернет-магазин атрибутики для настольных ролевых игр — миниатюры, кубы и аксессуары для тёмных кампаний.</p>
+</div>
+
 <div class="jumbotron">
-    <h1>Добро пожаловать в Лавку Некроманта!</h1>
-    <p>Создание и оживление фигурок - это целое искусство. Современная магия 3D-печати позволяет достигать невероятной детализации оболочки. После того, как сосуд Вашего персонажа создан, наши мастера делают всё возможное, чтобы вдохнуть красок в его тело и придать живой облик.</p>
+    <h2>Добро пожаловать!</h2>
+    <p>Создание и оживление фигурок — это целое искусство. Современная магия 3D-печати позволяет достигать невероятной детализации. Наши мастера помогут вашему персонажу выглядеть уникально.</p>
 </div>
 
 <div class="row">
+    <!-- Новости: последние 3 записи блога -->
+    <div class="col-md-8">
+        <h3>Последние новости</h3>
+
+        {% if latest_posts %}
+        <div class="list-group">
+            {% for post in latest_posts %}
+            <a href="{% url 'blog_detail' post.id %}" class="list-group-item list-group-item-action" style="display:flex; align-items:center;">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" style="width:96px; height:72px; object-fit:cover; margin-right:12px; border-radius:4px;">
+                {% endif %}
+                <div>
+                    <h4 style="margin:0 0 6px 0;">{{ post.title }}</h4>
+                    <p style="margin:0; color:#666;">{{ post.description|truncatewords:25 }}</p>
+                    <small class="text-muted">{{ post.posted|date:"d F Y H:i" }}</small>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <p class="mt-2"><a href="{% url 'blog_list' %}">Все новости →</a></p>
+        {% else %}
+        <p>Новостей пока нет. <a href="{% url 'blog_list' %}">Перейти в блог</a></p>
+        {% endif %}
+    </div>
+
+    <!-- Сайдбар с краткой информацией и ссылками -->
     <div class="col-md-4">
-        <h2>Новости</h2>
-        <p>
-            Совсем скоро в продажу поступят дьявольские и небожительские кубы. Следите за анонсами в нашем Telegram-канале!
-        </p>
+        <h3>О магазине</h3>
+        <p>Мы специализируемся на фигурках, уникальных дайсах и аксессуарах для ваших настолок. Доставка по России, кастомизация под заказ.</p>
+
+        <h4>Подписывайтесь</h4>
+        <p>Будьте в курсе новых поступлений: <a href="https://t.me/your_channel" target="_blank">наш Telegram</a></p>
     </div>
 </div>
 
-<div class="glide">
+<!-- Карусель — оставляем без изменений -->
+<div class="glide" style="margin-top:30px;">
     <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
-            <li class="glide__slide"><img src="{% static 'app/content/karusel1.png' %}" alt="Image1"></li>
-            <li class="glide__slide"><img src="{% static 'app/content/karusel2.png' %}" alt="Image2"></li>
-            <li class="glide__slide"><img src="{% static 'app/content/karusel3.png' %}" alt="Image3"></li>
+            <li class="glide__slide"><img src="{% static 'app/content/karusel1.png' %}" alt="Image1" class="img-responsive"></li>
+            <li class="glide__slide"><img src="{% static 'app/content/karusel2.png' %}" alt="Image2" class="img-responsive"></li>
+            <li class="glide__slide"><img src="{% static 'app/content/karusel3.png' %}" alt="Image3" class="img-responsive"></li>
         </ul>
     </div>
     <div data-glide-el="controls" class="glide-controls">
@@ -31,11 +65,14 @@
         <button data-glide-dir=">">Далее</button>
     </div>
 </div>
-<script>new Glide('.glide', {
-              type: 'carousel',
-              autoplay: 5000,
-              hoverpause: true,
-              perView: 1,
-          }).mount();</script>
+
+<script>
+    new Glide('.glide', {
+        type: 'carousel',
+        autoplay: 5000,
+        hoverpause: true,
+        perView: 1,
+    }).mount();
+</script>
 
 {% endblock %}
