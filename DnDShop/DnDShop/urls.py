@@ -24,6 +24,16 @@ urlpatterns = [
     path('blog/<int:pk>/', views.blog_detail, name='blog_detail'),
     path('newpost/', views.newpost, name='newpost'),
     path('videopost/', views.videopost, name='videopost'),
+    path('catalog/', views.catalog, name='catalog'),
+    path('catalog/<slug:category_slug>/', views.category_view, name='category'),
+    path('product/<slug:product_slug>/', views.product_detail, name='product_detail'),
+    path('cart/', views.cart_view, name='cart'),
+    path('cart/add/<int:product_id>/', views.cart_add, name='cart_add'),
+    path('cart/update/', views.cart_update, name='cart_update'),
+    path('my_orders/', views.my_orders, name='my_orders'),
+    path('orders/', views.orders_manager, name='orders_manager'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('order/<int:order_id>/', views.order_detail, name='order_detail'),
 
     path('login/',
          LoginView.as_view

@@ -1,0 +1,30 @@
+{% extends "app/layout.html" %}
+{% block content %}
+<h2>Детали заказа #{{ order.id }}</h2>
+<p>Статус: <strong>{{ order.get_status_display }}</strong></p>
+<p>Клиент: {% if order.customer %}{{ order.customer.username }}{% else %}<em>Гость</em>{% endif %}</p>
+<p>ФИО: {{ order.full_name }}</p>
+<p>Телефон: {{ order.phone }}</p>
+<p>Адрес: {{ order.address|linebreaks }}</p>
+<p>Комментарий: {{ order.comment|default:"—" }}</p>
+<p>Дата: {{ order.created_at|date:"Y-m-d H:i" }}</p>
+
+<hr />
+
+<h4>Позиции</h4>
+<table class="table table-condensed">
+    <thead><tr><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Подитог</th></tr></thead>
+    <tbody>
+        {% for it in items %}
+        <tr>
+            <td>{% if it.product %}<a href="{% url 'product_detail' product_slug=it.product.slug %}">{{ it.product.title }}</a>{% else %}<em>удален</em>{% endif %}</td>
+            <td>{{ it.price }} ₽</td>
+            <td>{{ it.quantity }}</td>
+            <td>{{ it.price|floatformat:2 }} ₽</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h4>Итого: <strong>{{ order.total_price }} ₽</strong></h4>
+{% endblock %}

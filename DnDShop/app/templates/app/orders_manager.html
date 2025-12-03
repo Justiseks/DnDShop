@@ -1,0 +1,59 @@
+{% extends "app/layout.html" %}
+{% block content %}
+<h1>Управление заказами</h1>
+
+  {% if orders %}
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Клиент</th>
+                <th>Дата</th>
+                <th>Статус</th>
+                <th>Сумма</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in orders %}
+            <tr>
+                <td>{{ o.id }}</td>
+                <td>
+                    {% if o.customer %}
+                    {{ o.customer.username }}<br />
+                    <small>{{ o.full_name }}</small>
+                    {% else %}
+                    <em>Гость</em>
+                    {% endif %}
+                </td>
+                <td>{{ o.created_at|date:"Y-m-d H:i" }}</td>
+                <td>{{ o.get_status_display }}</td>
+                <td>{{ o.total_price }} ₽</td>
+                <td style="min-width:260px;">
+                    <form method="post" style="display:inline-block; margin-right:8px;">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_id" value="{{ o.id }}">
+                        <div class="form-group" style="margin-bottom:6px;">
+                            <select name="status" class="form-control input-sm">
+                                <option value="NEW" {% if o.status == 'NEW' %}selected{% endif %}>Новый</option>
+                                <option value="PROCESSING" {% if o.status == 'PROCESSING' %}selected{% endif %}>В обработке</option>
+                                <option value="SHIPPED" {% if o.status == 'SHIPPED' %}selected{% endif %}>Отправлен</option>
+                                <option value="CANCELLED" {% if o.status == 'CANCELLED' %}selected{% endif %}>Отменён</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Сохранить</button>
+                    </form>
+
+                    <a href="{% url 'order_detail' order_id=o.id %}" class="btn btn-default btn-sm">Детали</a>
+                    <a href="{% url 'admin:app_order_change' o.id %}" class="btn btn-default btn-sm" target="_blank">Админ</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+  {% else %}
+<p>Пока нет заказов.</p>
+  {% endif %}
+{% endblock %}

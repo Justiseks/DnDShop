@@ -1,0 +1,17 @@
+{% extends "app/layout.html" %}
+{% block content %}
+<h1>Мои заказы</h1>
+  {% if orders %}
+<ul class="list-group">
+    {% for o in orders %}
+    <li class="list-group-item">
+        <a href="{% url 'order_detail' order_id=o.id %}">
+            Заказ #{{ o.id }} — {{ o.created_at|date:"Y-m-d H:i" }} — {{ o.get_status_display }} — {{ o.total_price }} ₽
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+  {% else %}
+<p>У вас пока нет заказов.</p>
+  {% endif %}
+{% endblock %}

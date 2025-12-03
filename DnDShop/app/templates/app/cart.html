@@ -1,0 +1,59 @@
+{% extends "app/layout.html" %}
+{% block content %}
+<h1>Корзина</h1>
+
+  {% if items %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Подитог</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for it in items %}
+        <tr>
+            <td><a href="{% url 'product_detail' product_slug=it.product.slug %}">{{ it.product.title }}</a></td>
+            <td>{{ it.product.price }} ₽</td>
+            <td style="width:200px;">
+                <!-- Отдельная форма обновления для каждой строки -->
+                <form method="post" action="{% url 'cart_update' %}" class="form-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ it.product.id }}">
+                    <input type="hidden" name="action" value="update">
+                    <div class="input-group">
+                        <input type="number" name="quantity" value="{{ it.quantity }}" min="1" class="form-control" style="width:100px;">
+                        <span class="input-group-btn" style="margin-left:8px;">
+                            <button class="btn btn-primary" type="submit">Обновить</button>
+                        </span>
+                    </div>
+                </form>
+            </td>
+            <td>{{ it.subtotal }} ₽</td>
+            <td>
+                <form method="post" action="{% url 'cart_update' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ it.product.id }}">
+                    <input type="hidden" name="action" value="remove">
+                    <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="well">
+    <h4>Итого: <strong>{{ total }} ₽</strong></h4>
+    <p>
+        <a class="btn btn-success" href="{% url 'checkout' %}">Оформить заказ</a>
+    </p>
+</div>
+  {% else %}
+<p>Ваша корзина пуста.</p>
+<p><a href="{% url 'catalog' %}" class="btn btn-default">Перейти в каталог</a></p>
+  {% endif %}
+{% endblock %}

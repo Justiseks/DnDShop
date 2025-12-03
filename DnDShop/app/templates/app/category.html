@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ category.name }}</h1>
+    {% if category.description %}
+    <p class="lead">{{ category.description }}</p>
+    {% endif %}
+</div>
+
+  {% if products %}
+<div class="row">
+    {% for p in products %}
+    <div class="col-sm-6 col-md-4">
+        <div class="card product-card" style="margin-bottom:20px; padding:10px; border-radius:6px;">
+            {% if p.image %}
+            <a href="{% url 'product_detail' product_slug=p.slug %}">
+                <img src="{{ p.image.url }}" alt="{{ p.title }}" class="img-responsive" style="height:180px; width:100%; object-fit:cover; border-radius:4px;">
+            </a>
+            {% endif %}
+            <h4 style="margin-top:10px;"><a href="{% url 'product_detail' product_slug=p.slug %}">{{ p.title }}</a></h4>
+            {% if p.short_description %}
+            <p>{{ p.short_description|truncatechars:120 }}</p>
+            {% endif %}
+            <p><strong>Цена:</strong> {{ p.price }} ₽</p>
+            <p>
+                <a class="btn btn-primary btn-sm" href="{% url 'product_detail' product_slug=p.slug %}">Подробнее</a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+  {% else %}
+<p>В этой категории пока нет товаров.</p>
+  {% endif %}
+{% endblock %}
