@@ -32,19 +32,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Главная</a></li>
                     <li><a href="{% url 'catalog' %}">Каталог</a></li>
-                    <li><a href="{% url 'about' %}">О нас</a></li>
                     <li><a href="{% url 'contact' %}">Контакты</a></li>
-                    <li><a href="{% url 'links' %}">Ссылки</a></li>
-                    <li><a href="{% url 'pool' %}">Обратная связь</a></li>
                     <li><a href="{% url 'blog_list' %}">Блог</a></li>
 
                     {% if user.is_superuser %}
                     <li><a href="{% url 'newpost' %}">Добавить статью</a></li>
                     {% endif %}
 
-                    <li><a href="{% url 'videopost' %}">Видео</a></li>
-
-                    {# Пункты, зависящие от ролей #}
                     {% if user.is_authenticated %}
                     {% if user|has_group:"Client" %}
                     <li><a href="{% url 'cart' %}">Корзина</a></li>

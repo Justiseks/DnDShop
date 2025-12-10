@@ -7,7 +7,6 @@ from django.http import HttpRequest, HttpResponseForbidden
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PoolForm
 from django.db import models
 from .models import Blog, Comment, Category, Product, Order, OrderItem
 from .forms import CommentForm
@@ -47,58 +46,6 @@ def contact(request):
             'year':datetime.now().year,
         }
     )
-
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/about.html',
-        {
-            'title':'О нас',
-            'message':'Что это за сайт?',
-            'year':datetime.now().year,
-        }
-    )
-
-def links(request):
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/links.html',
-        {
-            'title':'Ссылки',
-            'message':'Полезные ресурсы.',
-            'year':datetime.now().year,
-        }
-    )
-
-def pool(request):
-     submitted = False
-     if request.method == 'POST':
-         form = PoolForm(request.POST)
-         if form.is_valid():
-             submitted = True
-             field_names = {
-                 'rating_overall': 'Общее впечатление',
-                 'rating_design': 'Внешний вид',
-                 'rating_content': 'Новости и контент',
-                 'features_liked': 'Что Вам больше всего понравилось?',
-                 'features_improve': 'Что мы могли бы улучшить?',
-                 'newsletter': 'Хотите получать бесплатную рассылку новостей?',
-                 'contact_method': 'Способ связи',
-             }
-             submitted_data = [f'{field_names[field]}: {value}' for field, value in form.cleaned_data.items()]
-             for i in submitted_data:
-                 if 'Подписка на рассылку' in i:
-                     index = submitted_data.index(i)
-                     submitted_data[index] = 'Подписка на рассылку: Получать' if 'True' in i else 'Подписка на рассылку: Не получать'
-                 if 'Способ связи' in i:
-                     index = submitted_data.index(i)
-                     submitted_data[index] = 'Способ связи: Сообщить по телефону' if 'phone' in i else 'Способ связи: Сообщить на email'
-     else:
-         form = PoolForm()
-     return render(request, 'app/pool.html', {'form': form, 'title':'Обратная связь', 'submitted': submitted, 'submitted_data': submitted_data if submitted else None})
 
 def registration(request):
     """
@@ -457,6 +404,3 @@ def order_detail(request, order_id):
     items = order.items.all()
     return render(request, 'app/order_detail.html', {'order': order, 'items': items})
 
-
-def videopost(request): #Код действия контреллера
-     return render(request, "app/videopost.html")
