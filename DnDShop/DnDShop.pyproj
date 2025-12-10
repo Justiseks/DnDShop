@@ -36,6 +36,7 @@
     <Compile Include="app\admin.py" />
     <Compile Include="app\apps.py" />
     <Compile Include="app\forms.py" />
+    <Compile Include="app\middleware.py" />
     <Compile Include="app\models.py" />
     <Compile Include="app\templatetags\group_tags.py" />
     <Compile Include="app\templatetags\__init__.py" />
