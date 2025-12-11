@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5 {
 /* Navbar links */
 .navbar .nav > li > a {
     color: #f1efe9;
-    margin-top: 10px;
+    margin-top: 0px;
     padding-top: 18px;
 }
 
@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5 {
 
     .jumbotron p {
         color: var(--text);
-        font-size: 1.05rem;
+        font-size: 15px;
     }
 /* List-group items (blog teasers on home) */
 .list-group-item {
@@ -193,10 +193,21 @@ h1, h2, h3, h4, h5 {
     .btn-primary:hover, .save:hover {
         background-color: var(--olive-2);
     }
-/* Success (add to cart / checkout CTA) */
+
+/* Убедимся, что .btn-success (если где-то используется) тоже будет olive */
 .btn-success {
-    background-color: var(--success);
+    background-color: var(--olive);
     border: 0;
+    color: #fff;
+}
+
+    .btn-success:hover {
+        background-color: var(--olive-2);
+    }
+
+/* Плашка "в наличии" — тоже в оливковом */
+.label-success {
+    background: var(--olive);
     color: #fff;
 }
 
@@ -205,7 +216,7 @@ h1, h2, h3, h4, h5 {
     }
 /* Danger */
 .btn-danger {
-    background-color: var(--danger);
+    background-color: var(--olive-2);
     color: #fff;
     border: 0;
 }
@@ -336,6 +347,14 @@ footer {
     width: 100%;
     border-radius: 8px;
     display: block;
+}
+
+/* === Carousel / Glide adjustments (key change) === */
+/* Make the carousel narrower (not full width) and centered.
+   The user said photos are square; we enforce aspect-ratio 1/1 so images stay square. */
+.glide {
+    max-width: 720px; /* уменьшили ширину карусели — подставь 600/800 по вкусу */
+    margin: 18px auto;
 }
 
 .glide-controls {
