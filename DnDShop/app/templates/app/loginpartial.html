@@ -1,17 +1,21 @@
-{% if user.is_authenticated %}
-<form id="logoutForm" action="/logout/" method="post" class="navbar-right">
-    {% csrf_token %}
-    <ul class="nav navbar-nav navbar-right">
-        <li><span class="navbar-brand">Здравствуй, {{ user.username }}!</span></li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
-    </ul>
-</form>
-
-{% else %}
-
-<ul class="nav 
-    -nav navbar-right">
-    <li><a href="{% url 'login' %}">Войти</a></li>
-</ul>
-
-{% endif %}
+{# app/templates/app/loginpartial.html #}
+{% load static %}
+<div id="nav-right-block" class="nav navbar-nav navbar-right">
+    {% if user.is_authenticated %}
+    <div class="nav-user">
+        <span class="navbar-text">Здравствуй, {{ user.username }}!</span>
+        <form id="logoutForm" action="{% url 'logout' %}" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="nav-action nav-link-button">Выйти</button>
+        </form>
+        {% if user.is_superuser %}
+        <a class="nav-action" href="{% url 'admin:index' %}">Админка</a>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="auth-nav">
+        <a class="nav-action" href="{% url 'login' %}">Войти</a>
+        <a class="nav-action" href="{% url 'registration' %}">Регистрация</a>
+    </div>
+    {% endif %}
+</div>

@@ -1,140 +1,341 @@
+:root {
+    --bg: #ece7e1;
+    --text: #3b3b3b;
+    --heading: #4a4a2e;
+    --accent-start: #d4af37;
+    --accent-end: #85754e;
+    --olive: #4a4a2e;
+    --olive-2: #5c5c3a;
+    --muted: #6b6b61;
+    --panel-bg: #fefdfb;
+    --border: #ddd;
+    --success: #2e8b57;
+    --danger: #b94a48;
+    --radius: 8px;
+    --shadow: 0 6px 18px rgba(0,0,0,0.06);
+    --glass: rgba(255,255,255,0.7);
+}
+/* Reset-ish */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
-    background-color: #ece7e1;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #3b3b3b;
-    padding-top: 80px;
-    padding-bottom: 20px;
-    transition: background-color 0.3s ease;
+    padding-top: 80px; /* room for fixed navbar */
+    padding-bottom: 40px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-
-h1, h2, h3, h4 {
-    color: #4a4a2e;
+/* Headings */
+h1, h2, h3, h4, h5 {
+    color: var(--heading);
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    line-height: 1.15;
 }
-
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/* Layout container adjustments */
+.container.body-content, .body-content {
+    padding-left: 18px;
+    padding-right: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
-}
-
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
-}
-
-.logo{
-    max-width: 50px;
-    margin-top: 5px;
-}
-
-.navbar{
+/* Navbar */
+.navbar {
     height: 70px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.75));
+    border: 0;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
-.navbar li  {
+    .navbar .navbar-brand {
+        color: #fff;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+    }
+
+.logo {
+    max-width: 50px;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+/* Navbar links */
+.navbar .nav > li > a {
+    color: #f1efe9;
     margin-top: 10px;
+    padding-top: 18px;
 }
 
-.navbar-right{
-    margin-top: 5px;
-}
-
-.feedback-section {
-    width: 600px;
-    padding: 20px;
-    margin: 30px 0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    background-color: #f9f9f9;
-    align-items: center;
-}
-
-
-.feedback-form {
-    align-items: center;
-}
-
-    .feedback-form label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold; 
+    .navbar .nav > li > a:hover,
+    .navbar .nav > li > a:focus {
+        color: var(--accent-start);
+        background: transparent;
     }
-
-    .feedback-form input,
-    .feedback-form textarea,
-    .feedback-form select {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-family: inherit; 
-    }
-
-    .feedback-form textarea {
-        height: 150px;
-        resize: vertical; 
-    }
-
-.submit-button {
-    background-color: #85754e;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+/* Right-side login partial */
+.navbar .navbar-right {
+    margin-top: 6px;
 }
 
-.submit-button:hover {
-    background-color: #6e6440;
+.navbar .navbar-brand span {
+    color: #fff;
 }
-
-
-.success-message {
-    color: #000000; 
-    font-weight: bold;
-    margin-bottom: 20px;
+/* Site header (main title on index) */
+.site-header {
+    margin: 20px 0;
     text-align: center;
 }
 
-.glide__slide img {
-    max-width: 100%;
-    height: auto;
-    max-height: 500px; 
-    object-fit: contain; 
+    .site-header h1 {
+        font-size: 2.6rem;
+        color: var(--heading);
+        margin: 6px 0;
+    }
+
+    .site-header p.muted {
+        color: var(--muted);
+        margin-top: 6px;
+    }
+/* Jumbotron */
+.jumbotron {
+    background: linear-gradient(180deg, var(--panel-bg), #fff);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 26px;
+}
+
+    .jumbotron h2 {
+        color: var(--heading);
+    }
+
+    .jumbotron p {
+        color: var(--text);
+        font-size: 1.05rem;
+    }
+/* List-group items (blog teasers on home) */
+.list-group-item {
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.04);
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform .14s ease, box-shadow .14s ease;
+}
+
+    .list-group-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+        text-decoration: none;
+    }
+
+    .list-group-item img {
+        width: 96px;
+        height: 72px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+/* Product cards / panels (catalog & category) */
+.card.product-card, .panel.panel-default {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 12px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+}
+
+    .card.product-card h4 {
+        margin-top: 8px;
+        margin-bottom: 6px;
+        color: var(--heading);
+    }
+
+    .card.product-card p {
+        color: var(--text);
+    }
+/* Product gallery images */
+.product-gallery img, .photopost {
+    border-radius: 6px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 8px 14px;
+    transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+}
+
+    .btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(74,74,46,0.14);
+    }
+/* Primary (olive) action button used for e.g. Save articles */
+.btn-primary, .save {
+    background-color: var(--olive);
+    color: white;
+    border: 0;
+}
+
+    .btn-primary:hover, .save:hover {
+        background-color: var(--olive-2);
+    }
+/* Success (add to cart / checkout CTA) */
+.btn-success {
+    background-color: var(--success);
+    border: 0;
+    color: #fff;
+}
+
+    .btn-success:hover {
+        background-color: #256e46;
+    }
+/* Danger */
+.btn-danger {
+    background-color: var(--danger);
+    color: #fff;
+    border: 0;
+}
+
+    .btn-danger:hover {
+        background-color: #9a3a3a;
+    }
+/* Forms & inputs */
+input, select, textarea {
+    font-family: inherit;
+    font-size: 0.98rem;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: white;
+    color: var(--text);
+}
+
+    input:focus, textarea:focus, select:focus {
+        border-color: var(--olive);
+        box-shadow: 0 6px 18px rgba(74,74,46,0.08);
+        outline: none;
+    }
+/* Validation */
+.field-validation-error, .validation-summary-errors {
+    color: var(--danger);
+}
+
+.input-validation-error {
+    border-color: var(--danger);
+}
+/* Panels/wells */
+.well, .panel.panel-default {
+    background: var(--panel-bg);
+    border-radius: 8px;
+    padding: 14px;
+}
+/* Article/form section (newpost) */
+.article-form-section {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px 25px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: var(--shadow);
+}
+
+    .article-form-section h3 {
+        color: var(--heading);
+        text-align: center;
+        margin-bottom: 18px;
+    }
+
+    .article-form-section label {
+        color: var(--heading);
+        font-weight: 700;
+    }
+/* Comments */
+.comment-section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+    .comment-section .date {
+        color: #999;
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+    }
+/* Tables (cart, orders, checkout) */
+.table {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+    .table > thead > tr > th {
+        background: linear-gradient(180deg, rgba(250,250,250,0.9), rgba(245,245,245,0.9));
+        border-bottom: 1px solid rgba(0,0,0,0.04);
+        color: var(--muted);
+        font-weight: 700;
+    }
+
+    .table > tbody > tr > td {
+        vertical-align: middle;
+    }
+/* Order detail small table */
+.table-condensed th, .table-condensed td {
+    padding: 8px 10px;
+}
+/* Footer */
+footer {
+    text-align: center;
+    color: #777;
+    margin-top: 26px;
+    padding-top: 8px;
+}
+/* Small utility classes */
+.muted {
+    color: #777;
+}
+
+.text-muted {
+    color: #888;
+}
+
+.label {
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-weight: 700;
+}
+
+.label-success {
+    background: var(--success);
+    color: #fff;
+}
+
+.label-default {
+    background: #ccc;
+    color: #333;
+}
+/* Glide (carousel) tweaks */
+.glide__slides img {
+    width: 100%;
+    border-radius: 8px;
     display: block;
-    margin: 0 auto;
 }
 
 .glide-controls {
@@ -142,240 +343,289 @@ input[type="checkbox"].input-validation-error {
     margin-top: 10px;
 }
 
-.glide-controls button {
-    margin: 0 10px;
-    padding: 8px 16px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-
-hr {
-    border: none;
-    height: 2px;
-    background: linear-gradient(to right, #fff, #d4af37, #FFF);
-    margin: 30px 0;
-}
-
-
-section {
-    background-color: #fefdfb;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-bottom: 30px;
-}
-
-
-
-    section:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    .glide-controls button {
+        background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+        border: 0;
+        color: #fff;
+        padding: 8px 12px;
+        margin: 0 6px;
+        border-radius: 6px;
+        cursor: pointer;
     }
-
-    section + section {
-        margin-top: 60px; 
-
-    }
-
-        section + section::before {
-            content: "";
-            position: absolute;
-            top: -30px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(to right, #fff, #d4af37, #fff);
-            border-radius: 1px;
-        }
-
-
-
-    section a {
-        color: #000; 
-        text-decoration: none; 
-        transition: color 0.3s ease;
-    }
-
-        section a:hover {
-            color: #d4af37; 
-            text-decoration: none; 
-        }
-
-.comment-form {
-    align-items: center;
-}
-
-    .comment-form label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold; 
-    }
-
-    .comment-form input,
-    .comment-form textarea,
-    .comment-form select {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-family: inherit; 
-    }
-
-    .comment-form textarea {
-        height: 150px;
-        resize: vertical; 
-        max-width: 100%;
-    }
-
-.photopost {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 20px;
-}
-
-.date {
-    font-size: 0.9em;
-    color: #6e6440;
-    text-align: right;
-    margin-bottom: 10px;
-    font-style: italic;
-}
-
-.post-date {
-    margin-top: -10px;
-}
-
-.comment-date {
-    margin-bottom: 5px;
-}
-
-.video-section {
-    background-color: #fefdfb;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 30px 20px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-    .video-section:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .video-section h2 {
-        color: #4a4a2e;
-        font-size: 1.6em;
-        font-weight: bold;
-        margin-bottom: 10px;
-        margin-top: 0;
-    }
-
+/* Visual accent divider used in video block etc */
 .video-divider {
     width: 80px;
     height: 3px;
-    background: linear-gradient(to right, #d4af37, #85754e);
+    background: linear-gradient(to right, var(--accent-start), var(--accent-end));
     margin: 10px auto 30px auto;
     border-radius: 2px;
 }
-
-.video-section video {
+/* Photo posts / blog images */
+.photopost {
     width: 100%;
-    max-width: 800px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    display: block;
-    margin: 0 auto;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+/* Login partial / navbar-right spacing fix (base) */
+#logoutForm ul.nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.article-form-section {
-    background-color: #fefdfb;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 30px 25px;
-    margin: 40px auto;
-    max-width: 800px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    box-sizing: border-box;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+#logoutForm span.navbar-brand {
+    color: #fff;
+    font-weight: 600;
+}
+/* Доп. правки для навбара: выравнивание правого блока */
+#nav-right-block {
+    margin-left: auto;
 }
 
-    .article-form-section:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+.navbar-text {
+    color: #fff;
+}
+
+.navbar .nav > li > a {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.navbar .nav > li {
+    display: inline-flex;
+    align-items: center;
+}
+/* NAVBAR vertical alignment fixes */
+.navbar {
+    height: 70px;
+}
+    /* Make container a flex row so children can align center vertically */
+    .navbar .container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+/* Keep .navbar-header (logo + toggler) aligned */
+.navbar-header {
+    display: flex;
+    align-items: center;
+}
+/* Logo sizing and vertical centering */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0 12px 0 0;
+    margin: 0;
+    height: 70px;
+}
+
+    .navbar-brand .logo {
+        height: 44px;
+        width: auto;
+        margin: 0;
+        display: block;
+    }
+/* Make the collapse area stretch and justify content between left nav and right block */
+.navbar-collapse {
+    display: flex !important;
+    align-items: center;
+    flex: 1 1 auto;
+    justify-content: space-between;
+}
+/* Left-side nav items: use line-height to vertically center text */
+.navbar .nav.navbar-nav {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+    .navbar .nav.navbar-nav > li {
+        display: flex;
+        align-items: center;
     }
 
-    .article-form-section h3 {
-        text-align: center;
-        font-size: 1.6em;
-        font-weight: bold;
-        color: #4a4a2e;
-        margin-bottom: 20px;
+        .navbar .nav.navbar-nav > li > a {
+            color: #f1efe9;
+            padding: 0 12px;
+            line-height: 70px; /* vertical center inside navbar */
+            height: 70px;
+            display: inline-flex;
+            align-items: center;
+        }
+/* Right-side auth/user block (base) */
+#nav-right-block {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.navbar-text {
+    color: #fff;
+    font-weight: 600;
+    line-height: 70px;
+    display: inline-block;
+    padding: 0 6px;
+    margin: 0;
+}
+/* small class for auth/action links on right */
+.nav-action {
+    color: #f1efe9;
+    display: inline-flex;
+    align-items: center;
+    height: 70px;
+    line-height: 70px;
+    padding: 0 8px;
+    margin: 0;
+}
+    /* Hover states */
+    .nav-action:hover, .navbar .nav > li > a:hover {
+        color: var(--accent-start);
+        text-decoration: none;
+    }
+/* mobile: when collapsed, remove line-height to let items stack normally */
+@media (max-width: 991px) {
+    .navbar {
+        height: auto;
     }
 
-    .article-form-section form {
+        .navbar .nav.navbar-nav > li > a,
+        .navbar-text,
+        .nav-action {
+            height: auto;
+            line-height: normal;
+            padding: 10px 12px;
+        }
+
+        .navbar .container {
+            display: block;
+        }
+
+    .navbar-collapse {
+        display: block !important;
+    }
+
+    body {
+        padding-top: 120px;
+    }
+    /* allow more room on small screens */
+}
+/* small helpers for link styles */
+a {
+    color: var(--olive);
+}
+
+    a:hover, a:focus {
+        color: var(--accent-end);
+        text-decoration: underline;
+    }
+/* subtle forms/buttons alignment */
+.form-inline .input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-group .form-control {
+    width: 100px;
+}
+/* Accessibility: visible focus for keyboard users */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(210,175,55,0.12);
+}
+/* Small printable adjustments */
+@media print {
+    .navbar, .glide-controls, .btn {
+        display: none !important;
+    }
+
+    body {
+        background: #fff;
+        padding: 0;
+        color: #000;
+    }
+}
+/* === Navbar: выравнивание правого блока и формы выхода === */
+/* контейнер правого блока (вне состояния collapse) */
+#nav-right-block {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+}
+/* обёртка для авторизованного пользователя */
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+/* форма выхода — не блокирует линию */
+.logout-form {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+/* ссылкоподобная кнопка в форме (выглядит как ссылка) */
+.nav-link-button {
+    background: none;
+    border: none;
+    color: #f1efe9;
+    cursor: pointer;
+    padding: 0 8px;
+    font: inherit;
+    height: 70px;
+    line-height: 70px;
+    margin: 0;
+}
+/* For links in the right block */
+.nav-action {
+    color: #f1efe9;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    height: 70px;
+    line-height: 70px;
+    margin: 0;
+}
+    /* Hover states */
+    .nav-action:hover, .nav-link-button:hover {
+        color: var(--accent-start);
+        text-decoration: none;
+    }
+/* Focus cleanup */
+.nav-link-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(210,175,55,0.12);
+}
+/* Mobile adjustments for right block */
+@media (max-width: 991px) {
+    #nav-right-block {
+        display: block;
+        margin-left: 0;
+    }
+
+    .nav-user, .auth-nav {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 6px;
+        padding: 6px 0;
     }
 
-        .article-form-section form input,
-        .article-form-section form textarea,
-        .article-form-section form select {
-            width: 100%;
-            max-width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-family: inherit;
-            font-size: 1em;
-            background-color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .article-form-section form textarea {
-            min-height: 200px;
-            resize: vertical;
-        }
-
-    .article-form-section .save {
-        background-color: #4a4a2e;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        font-weight: bold;
-        width: fit-content;
-        align-self: center;
+    .nav-action, .nav-link-button {
+        height: auto;
+        line-height: normal;
+        padding: 8px 12px;
+        display: inline-block;
     }
-
-        .article-form-section .save:hover {
-            background-color: #5c5c3a;
-        }
-
-
-    .article-form-section form label {
-        display: block;
-        margin-bottom: 6px;
-        font-weight: bold;
-        color: #4a4a2e;
-        font-size: 1em;
-    }
+}
