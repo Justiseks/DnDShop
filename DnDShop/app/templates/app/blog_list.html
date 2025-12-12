@@ -1,10 +1,10 @@
 {% extends 'app/layout.html' %}
-  {% block title %}Блог{% endblock %}
+  {% block title %}Новости{% endblock %}
 
   {% load static %}
 
   {% block content %}
-<h1>Статьи блога</h1>
+<h1>Новости</h1>
       {% for post in posts %}
 <section>
     <h2><a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a></h2>

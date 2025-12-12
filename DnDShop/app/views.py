@@ -3,6 +3,7 @@ Definition of views.
 """
 
 from datetime import datetime
+from turtle import title
 from django.http import HttpRequest, HttpResponseForbidden
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import UserCreationForm
@@ -87,7 +88,7 @@ def registration(request):
 
 def blog_list(request):
      posts = Blog.objects.all()
-     return render(request, 'app/blog_list.html', {'posts': posts})
+     return render(request, 'app/blog_list.html', {'posts': posts, 'title':'Новости'})
  
 def blog_detail(request, pk):
     post = get_object_or_404(Blog, pk=pk)
@@ -112,7 +113,8 @@ def blog_detail(request, pk):
             'post': post,
             'comments': comments,
             'form': form,
-            'year': datetime.now().year
+            'year': datetime.now().year,
+            'title': post.title
         }
     )
 
