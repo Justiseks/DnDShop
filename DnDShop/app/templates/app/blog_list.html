@@ -1,16 +1,41 @@
 {% extends 'app/layout.html' %}
-  {% block title %}Новости{% endblock %}
+{% block title %}Новости{% endblock %}
+{% load static %}
 
-  {% load static %}
+{% block content %}
+<div class="container body-content">
+    <header class="news-header">
+        <h1>Новости</h1>
+        <p class="muted">Самые свежие вести из самых глубин Мензоберранзана.</p>
+    </header>
 
-  {% block content %}
-<h1>Новости</h1>
-      {% for post in posts %}
-<section>
-    <h2><a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a></h2>
-    <p>{{ post.description|truncatewords:30 }}</p>
-    <p class="date">{{ post.posted }}</p>
-    <a href="{% url 'blog_detail' post.id %}" class="read-more">Читать далее</a>
-</section>
-      {% endfor %}
-  {% endblock %}
+    <main class="news-grid" aria-live="polite">
+        {% for post in posts %}
+        <article class="news-card" role="article" aria-labelledby="post-{{ post.id }}-title">
+            <a href="{% url 'blog_detail' post.id %}" class="news-media" aria-hidden="true">
+                {% if post.image %}
+                <img class="news-thumb" src="{{ post.image.url }}" alt="{{ post.title }}">
+                {% else %}
+                <div class="news-thumb placeholder" aria-hidden="true"></div>
+                {% endif %}
+            </a>
+
+            <div class="news-body">
+                <h2 id="post-{{ post.id }}-title" class="news-title">
+                    <a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
+                </h2>
+
+                <p class="news-excerpt">{{ post.description|truncatewords:30 }}</p>
+
+                <div class="news-footer">
+                    <p class="date meta"><time datetime="{{ post.posted }}">{{ post.posted }}</time></p>
+                    <a href="{% url 'blog_detail' post.id %}" class="btn btn-primary read-more" aria-label="Читать {{ post.title }}">Читать далее</a>
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <p>Пока нет новостей.</p>
+        {% endfor %}
+    </main>
+</div>
+{% endblock %}
