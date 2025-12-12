@@ -33,7 +33,7 @@
                     <li><a href="{% url 'home' %}">Главная</a></li>
                     <li><a href="{% url 'catalog' %}">Каталог</a></li>
                     <li><a href="{% url 'contact' %}">Контакты</a></li>
-                    <li><a href="{% url 'blog_list' %}">Блог</a></li>
+                    <li><a href="{% url 'blog_list' %}">Новости</a></li>
                     {% if user.is_superuser %}
                     <li><a href="{% url 'newpost' %}">Добавить статью</a></li>
                     {% endif %}
@@ -43,7 +43,7 @@
                     <li><a href="{% url 'my_orders' %}">Мои заказы</a></li>
                     {% endif %}
                     {% if user|has_group:"Manager" %}
-                    <li><a href="{% url 'orders_manager' %}">Заказы (менеджер)</a></li>
+                    <li><a href="{% url 'orders_manager' %}">Панель заказов</a></li>
                     {% endif %}
                     {% endif %}
                 </ul>
